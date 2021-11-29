@@ -1,0 +1,30 @@
+<div class="details">
+    <form>
+        <div class="form-row">
+            {% for key in details.keys() %}
+                {% if details[key] != 'False' and details[key] != 'True' %}
+                    <div class="form-group col-md-6">
+                        <label for="displayName">{{ key.capitalize() }}</label>
+                        <input type="text" class="form-control" id={{ key }}
+                                value="{{ details[key] }}">
+                    </div>
+                {% else %}
+                    <div class="form-group col-md-6">
+                        <label for="displayName">{{ key.capitalize() }}</label>
+                        <input type="checkbox" class="form-check-input" id={{ key }}
+                                {% if details[key] == 'True' %}
+                                    checked
+                                {% endif %}
+                        >
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-danger">Remove</button>
+
+    </form>
+</div>

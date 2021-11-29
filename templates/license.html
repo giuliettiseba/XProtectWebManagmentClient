@@ -1,0 +1,45 @@
+<div style="overflow-y: scroll; width: 100%; height: 100%" >
+<h1>License</h1>
+<h2>License Details</h2>
+<p>Site license detail</p>
+{#<table class="table table-bordered">#}
+{#<thead>#}
+{#  <tr>#}
+{#    {% for key in array[0] %}#}
+{#    <th>{{key}}</th>#}
+{#    {% endfor %}#}
+{#  </tr>#}
+{#</thead>#}
+{#<tbody>#}
+{#    {% for item in array %}#}
+{#    <tr>#}
+{#        {% for key in item %}#}
+{#        <td>{{ item[key] }}</td>#}
+{#        {% endfor %}#}
+{#    </tr>#}
+{#    {% endfor %}#}
+{##}
+{#</tbody>#}
+{#</table>#}
+{##}
+
+<table class="table table-bordered">
+<thead>
+  <tr>
+    {% for key in details[0] %}
+    <th>{{key}}</th>
+    {% endfor %}
+  </tr>
+</thead>
+<tbody>
+    {% for item in details %}
+    <tr>
+        {% for key in item %}
+        <td>{{ item[key] }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+
+</tbody>
+</table>
+</div>

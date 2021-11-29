@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>XProtect</title>
+    <title>XProtect</title>
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/journal/bootstrap.min.css">#}
+
+    <link href="{{ url_for('static', filename='/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/css/simpleTree.css') }}" rel="stylesheet">
+
+
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: 'Roboto';
+        }
+
+        .container {
+            margin: 150px auto;
+        }
+
+        #mytree {
+            margin: 20px auto;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="modalPlaceholder"></div>
+
+<div class="container">
+
+
+    <div class="split left">
+        <div>
+            <h1>XProtect 2022R1</h1>
+            <div><b>Search:</b> <input type="search" id="example" class="form-control"></div>
+        </div>
+        <div id="mytree"></div>
+    </div>
+
+
+    <div class="split right" id="details">
+        <div class="details">
+            <h1>Welcome to XProtect Web Interface.</h1>
+            <p>
+            This web make use of Milestone Integration Platform VMS Rest API . <br>
+                Implemented in Python and Js with flask, bootstrap and jquery.<br>
+                API trough milestone api_gateway for phyton <a href="index.html"></a>
+                Follow the link below to get documentation and samples:
+                <a href="https://doc.developer.milestonesys.com/mipvmsapi/">https://doc.developer.milestonesys.com/mipvmsapi/</a>
+
+            </p>
+
+        </div>
+    </div>
+
+
+</div>
+
+<script src="{{ url_for('static', filename='/js/jquery-3.6.0.js ') }}"></script>
+<script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='/js/simpleTree.js ') }}"></script>
+
+
+<script>
+    let data = {{ list_ms_rs|tojson }};
+
+    var options = {
+        // Optionally provide here the jQuery element that you use as the search box for filtering the tree. simpleTree then takes control over the provided box, handling user input
+        searchBox: $('#example'),
+
+        // Search starts after at least 3 characters are entered in the search box
+        searchMinInputLength: 2,
+
+        // Number of pixels to indent each additional nesting level
+        indentSize: 25,
+
+        // Show child count badges?
+        childCountShow: true,
+
+        // Symbols for expanded and collapsed nodes that have child nodes
+        symbols: {
+            collapsed: '▶',
+            expanded: '▼'
+        },
+
+        // these are the CSS class names used on various occasions. If you change these names, you also need to provide the corresponding CSS class
+        css: {
+            childrenContainer: 'simpleTree-childrenContainer',
+            childCountBadge: 'simpleTree-childCountBadge badge badge-pill badge-secondary',
+            highlight: 'simpleTree-highlight',
+            indent: 'simpleTree-indent',
+            label: 'simpleTree-label',
+            mainContainer: 'simpleTree-mainContainer',
+            nodeContainer: 'simpleTree-nodeContainer',
+            selected: 'simpleTree-selected',
+            toggle: 'simpleTree-toggle'
+        }
+    };
+    $('#mytree').simpleTree(options, data);
+</script>
+
+</body>
+</html>
